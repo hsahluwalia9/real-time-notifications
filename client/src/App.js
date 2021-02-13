@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import socketIOClient from "socket.io-client";
 import './App.css';
 
 function App() {
   const [notifications, setNotifications] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/notifications', {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-      }),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setNotifications(response);
-      })
-      .catch((error) => console.log(error));
+    const socket = socketIOClient('http://127.0.0.1:5000');
+    socket.on("PUSH_NOTIFICATION", data => {
+      setNotifications(data);
+    });
+    return () => socket.disconnect();
   }, []);
   return (
     <div className="App">
