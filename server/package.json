@@ -1,0 +1,20 @@
+{
+  "name": "real-time-notification-server",
+  "version": "1.0.0",
+  "description": "Real time notification server using web sockets",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node .",
+    "start:dev": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
